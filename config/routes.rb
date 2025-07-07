@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get  '/verify_otp', to: 'otp#new', as: 'verify_otp'
   post '/verify_otp', to: 'otp#create'
   get  '/resend_otp', to: 'otp#resend', as: 'resend_otp'
+
+  get '/auth/:provider/callback', to: 'registrations#google_oauth'
 end
