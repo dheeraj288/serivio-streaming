@@ -5,17 +5,14 @@ class OtpController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-
     if @user.nil?
       redirect_to login_path, alert: "User not found."
       return
     end
-
     if params[:otp_code].blank?
       flash.now[:alert] = "Please enter the OTP"
       render :new and return
     end
-
     if @user.otp_code == params[:otp_code] && @user.otp_sent_at > 10.minutes.ago
       @user.update(otp_verified: true, otp_code: nil)
       session[:user_id] = @user.id
