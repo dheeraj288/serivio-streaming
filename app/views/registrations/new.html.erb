@@ -50,5 +50,13 @@
       Already have an account?
       <%= link_to "Log in", login_path, class: "text-[#E50914] hover:underline" %>
     </p>
+
+    <!-- Google Login Button -->
+    <div class="mt-6">
+      <%= link_to "/auth/google_oauth2", class: "w-full flex items-center justify-center gap-3 bg-white text-black font-semibold py-3 rounded-lg hover:bg-gray-100 transition" do %>
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google icon" class="h-5 w-5" />
+        Continue with Google
+      <% end %>
+    </div>
   </div>
 </section>
