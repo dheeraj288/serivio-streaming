@@ -1,0 +1,29 @@
+<section class="p-6 bg-black text-white min-h-screen">
+  <div class="max-w-5xl mx-auto">
+    <!-- Back Button -->
+    <%= link_to "← Back", videos_path, class: "text-[#E50914] hover:underline text-sm mb-6 inline-block" %>
+
+    <!-- Video Title & Info -->
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-2"><%= @video.title %></h1>
+    <p class="text-gray-400 text-sm md:text-base mb-4">
+      <%= @video.genre %> • <%= @video.release_year %>
+    </p>
+
+    <!-- Description -->
+    <p class="mb-6 text-gray-300 leading-relaxed">
+      <%= @video.description %>
+    </p>
+
+    <!-- Video Player -->
+    <% if @video.video_url.present? %>
+      <div class="relative w-full h-auto max-w-5xl mx-auto aspect-video bg-black rounded-xl shadow-2xl overflow-hidden">
+        <video controls class="w-full h-full rounded-lg" preload="metadata">
+          <source src="<%= @video.video_url %>" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    <% else %>
+      <p class="text-red-500 text-lg text-center mt-10">🚫 Video not available</p>
+    <% end %>
+  </div>
+</section>

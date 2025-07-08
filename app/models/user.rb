@@ -10,4 +10,8 @@ class User < ApplicationRecord
     self.otp_sent_at = Time.current
     save!
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "id", "id_value", "name", "otp_code", "otp_sent_at", "otp_verified", "password_digest", "phone", "provider", "uid", "updated_at"]
+  end 
 end

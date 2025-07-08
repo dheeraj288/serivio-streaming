@@ -72,3 +72,13 @@ end
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
+gem 'activeadmin'
+gem 'devise' # required internally by ActiveAdmin (but we won't use it for frontend auth)
+gem 'sassc'
+
+gem 'cloudinary'
+gem 'faker'
+
+gem 'stripe'
+gem 'ransack'
+gem 'streamio-ffmpeg'
