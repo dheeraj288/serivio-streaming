@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get  '/resend_otp', to: 'otp#resend', as: 'resend_otp'
 
   get '/auth/:provider/callback', to: 'registrations#google_oauth'
+  resources :videos, only: [:index, :show]
 end

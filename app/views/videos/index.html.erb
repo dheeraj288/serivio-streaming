@@ -1,0 +1,38 @@
+<section class="p-6 bg-black text-white min-h-screen">
+  <h1 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-wide">
+    🎬 Watch Our Latest Releases
+  </h1>
+
+  <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+    <% @videos.each do |video| %>
+      <div class="group bg-[#141414] rounded-lg overflow-hidden shadow-xl hover:scale-[1.03] transition transform duration-300">
+        <%= link_to video_path(video) do %>
+          <!-- Thumbnail with Play Icon Overlay -->
+          <div class="relative">
+            <% if video.thumbnail.present? && video.thumbnail.start_with?("http") %>
+              <%= image_tag video.thumbnail, class: "w-full h-52 object-cover group-hover:opacity-80 transition duration-300" %>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                <svg class="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            <% else %>
+              <%= image_tag "https://via.placeholder.com/300x200?text=No+Thumbnail", class: "w-full h-52 object-cover opacity-80" %>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Metadata -->
+          <div class="p-4">
+            <h2 class="text-lg font-bold truncate"><%= video.title %></h2>
+            <p class="text-sm text-gray-400 mt-1"><%= video.genre %> • <%= video.release_year %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
